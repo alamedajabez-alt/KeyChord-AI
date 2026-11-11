@@ -28,9 +28,14 @@ class LocalStorage:
         path = self._resolve(key)
         path.parent.mkdir(parents=True, exist_ok=True)
         tmp = path.with_suffix(path.suffix + ".part")
-        with open(tmp, "wb") as out:
-            shutil.copyfileobj(stream, out, length=1024 * 1024)  # streamed, never fully in memory
-        tmp.replace(path)  # atomic publish
+        try:
+            with open(tmp, "wb") as out:
+                shutil.copyfileobj(stream, out, length=1024 * 1024)  # streamed, never fully in memory
+            tmp.replace(path)  # atomic publish
+        except BaseException:
+            tmp.unlink(missing_ok=True)  # never leave a half-written file behind (size cap hit, disconnect, disk full)
+            self._prune_empty_parent(path)
+            raise
         return path.stat().st_size
 
     def open(self, key: str) -> BinaryIO:
@@ -43,4 +48,15 @@ class LocalStorage:
         return self._resolve(key).is_file()
 
     def delete(self, key: str) -> None:
-        self._resolve(key).unlink(missing_ok=True)
+        path = self._resolve(key)
+        path.unlink(missing_ok=True)
+        self._prune_empty_parent(path)
+
+    def _prune_empty_parent(self, path: Path) -> None:
+        """Remove the per-song directory once it is empty. Never removes the storage root."""
+        parent = path.parent
+        if parent != self.root:
+            try:
+                parent.rmdir()
+            except OSError:
+                pass  # not empty, or already gone
