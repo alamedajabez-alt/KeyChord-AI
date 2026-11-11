@@ -1,0 +1,11 @@
+# Audio / ML stack (Phase 4+). Install separately: heavy, needs ffmpeg on PATH.
+# Use Python 3.11 for the broadest compatibility with Basic Pitch / Demucs / PyTorch.
+numpy>=1.26
+scipy>=1.11
+librosa>=0.10.2
+soundfile>=0.12
+mutagen>=1.47          # container/duration probing without full decode
+mir_eval>=0.7          # standard chord/key/note evaluation metrics
+# Phase 11 (install when you reach it):
+# demucs>=4.0.1
+# basic-pitch>=0.3
