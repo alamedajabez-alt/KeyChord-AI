@@ -21,6 +21,11 @@ class Settings(BaseSettings):
     max_duration_seconds: int = Field(default=600, ge=10)
     analysis_timeout_seconds: int = Field(default=900, ge=30)
 
+    # Worker loop (python -m app.worker)
+    worker_poll_interval_seconds: float = Field(default=2.0, gt=0)
+    worker_stale_grace_seconds: int = Field(default=120, ge=0)  # slack beyond the timeout before a running job counts as orphaned
+    worker_max_attempts: int = Field(default=3, ge=1)  # a job that kills its worker this many times is failed, not retried forever
+
     auth_enabled: bool = False
     secret_key: str = "change-me"
 
