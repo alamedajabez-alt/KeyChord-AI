@@ -1,23 +1,2 @@
-import { AudioWaveform } from "lucide-react";
-import { ButtonLink } from "../ui/Button";
-import { Card } from "../ui/Card";
-import { EmptyState } from "../ui/EmptyState";
-
-export default function TimelinePanel({ songId }: { songId?: string }) {
-  return (
-    <Card className="flex min-h-[260px] flex-col">
-      <h2 className="label border-b border-ink-700 px-4 py-3">Chord timeline</h2>
-      <EmptyState
-        className="flex-1"
-        icon={AudioWaveform}
-        title={songId ? "No analysis yet" : "No song selected"}
-        description={
-          songId
-            ? "Chords will appear here once this song has been analyzed."
-            : "Upload a song to see its chords on a timeline."
-        }
-        action={!songId && <ButtonLink to="/upload" variant="secondary">Upload a song</ButtonLink>}
-      />
-    </Card>
-  );
-}
+import { AudioWaveform, Clock3 } from "lucide-react";import { ButtonLink } from "../ui/Button";import { Card } from "../ui/Card";import { EmptyState } from "../ui/EmptyState";
+export default function TimelinePanel({songId}:{songId?:string}){return <Card className="flex min-h-[440px] flex-col overflow-hidden"><div className="flex items-center justify-between border-b border-white/[.07] px-5 py-4"><div className="flex items-center gap-2"><AudioWaveform size={17} className="text-[#1ed760]"/><h2 className="text-sm font-bold">Chord timeline</h2></div><span className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#78847b]"><Clock3 size={13}/> Timestamped</span></div><div className="flex flex-1 flex-col justify-center"><EmptyState className="items-center text-center" icon={AudioWaveform} title={songId?"Analysis is not ready":"Start with a song"} description={songId?"Chord changes will appear here when the analysis is available.":"Your chord progression will be mapped here, ready to explore and play."} action={!songId&&<ButtonLink to="/upload">Upload a song</ButtonLink>}/></div></Card>}

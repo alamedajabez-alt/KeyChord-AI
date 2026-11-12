@@ -1,23 +1,3 @@
 import { Card } from "../ui/Card";
-
-// Static C3–B4 keyboard. No keys are highlighted until a chord is active.
-const WHITE = ["C", "D", "E", "F", "G", "A", "B"];
-const BLACK_AFTER: Record<string, boolean> = { C: true, D: true, E: false, F: true, G: true, A: true, B: false };
-const OCTAVES = [3, 4];
-
-export default function PianoPanel() {
-  const keys = OCTAVES.flatMap((o) => WHITE.map((n) => ({ n, o })));
-  return (
-    <Card className="p-4">
-      <h2 className="label mb-3">Piano</h2>
-      <div className="flex h-32 overflow-hidden rounded-md" role="img" aria-label="Piano keyboard, no chord selected">
-        {keys.map(({ n, o }) => (
-          <div key={`${n}${o}`} className="relative flex-1 border-r border-ink-600 bg-slate-200 last:border-r-0">
-            {BLACK_AFTER[n] && <div className="absolute -right-1.5 top-0 z-10 h-2/3 w-3 rounded-b bg-ink-950" />}
-          </div>
-        ))}
-      </div>
-      <p className="mt-3 text-xs text-slate-500">Suggested voicings appear here for the selected chord.</p>
-    </Card>
-  );
-}
+const WHITE=["C","D","E","F","G","A","B"];const BLACK:Record<string,boolean>={C:true,D:true,E:false,F:true,G:true,A:true,B:false};
+export default function PianoPanel(){return <Card className="overflow-hidden"><div className="border-b border-white/[.07] px-5 py-4"><h2 className="text-sm font-bold">Piano voicing</h2><p className="mt-1 text-xs text-[#7f8b82]">Suggested notes for each chord</p></div><div className="p-5"><div className="mb-4 flex h-24 overflow-hidden rounded-lg border border-white/10 bg-[#e9e9e5]" role="img" aria-label="Piano keyboard, no chord selected">{[3,4].flatMap(o=>WHITE.map(n=><div key={`${n}${o}`} className="relative flex-1 border-r border-[#b8bdb8] bg-[#f4f4f0] last:border-0">{BLACK[n]&&<div className="absolute -right-[5px] top-0 z-10 h-[62%] w-[10px] rounded-b-sm bg-[#151916] shadow-md"/>}</div>))}</div><div className="rounded-xl bg-white/[.035] p-4"><p className="label">Selected chord</p><p className="mt-2 text-3xl font-bold text-[#1ed760]">—</p><p className="mt-1 text-xs text-[#7e8a81]">Select a chord in the timeline to see its notes.</p></div><div className="mt-5 flex flex-wrap gap-2">{["Left hand","Right hand"].map(x=><span key={x} className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#8e9991]">{x}</span>)}</div></div></Card>}

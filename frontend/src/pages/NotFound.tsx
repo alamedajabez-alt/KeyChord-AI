@@ -2,12 +2,10 @@ import { ButtonLink } from "../components/ui/Button";
 
 export default function NotFound() {
   return (
-    <main className="grid min-h-screen place-items-center px-4 text-center">
-      <div className="space-y-3">
-        <p className="label">404</p>
-        <h1 className="text-2xl">Page not found</h1>
-        <ButtonLink to="/dashboard" variant="secondary">Back to dashboard</ButtonLink>
-      </div>
-    </main>
+    <div className="flex min-h-screen flex-col items-start justify-center gap-8 px-4 md:px-8">
+      <h1 className="text-[clamp(6rem,30vw,28rem)] leading-[0.8] text-accent">404</h1>
+      <p className="text-2xl font-medium tracking-tight md:text-4xl">That page doesn't exist.</p>
+      <ButtonLink to="/">Back to home</ButtonLink>
+    </div>
   );
 }

@@ -1,23 +1,2 @@
-import { Pause, Play, SkipBack } from "lucide-react";
-import { Card } from "../ui/Card";
-
-export default function PlayerPanel() {
-  return (
-    <Card className="flex flex-col p-4">
-      <h2 className="label mb-3">Player</h2>
-      <div className="mb-4 grid h-24 place-items-center rounded-lg bg-ink-800 text-xs text-slate-500">
-        No audio loaded
-      </div>
-      <div className="flex items-center justify-center gap-2">
-        <button disabled className="rounded-full p-2 text-slate-500" aria-label="Restart"><SkipBack className="h-4 w-4" /></button>
-        <button disabled className="rounded-full bg-ink-700 p-3 text-slate-500" aria-label="Play"><Play className="h-5 w-5" /></button>
-        <button disabled className="hidden rounded-full p-2" aria-label="Pause"><Pause className="h-4 w-4" /></button>
-      </div>
-      <p className="mt-3 text-center font-mono text-xs text-slate-500">0:00 / 0:00</p>
-      <dl className="mt-4 space-y-1 border-t border-ink-700 pt-3 text-xs">
-        <div className="flex justify-between"><dt className="text-slate-500">Key</dt><dd>—</dd></div>
-        <div className="flex justify-between"><dt className="text-slate-500">Tempo</dt><dd>—</dd></div>
-      </dl>
-    </Card>
-  );
-}
+import { Pause, Play, SkipBack, Volume2, AudioWaveform } from "lucide-react";import { Card } from "../ui/Card";
+export default function PlayerPanel(){return <Card className="overflow-hidden"><div className="flex items-center gap-2 border-b border-white/[.07] px-5 py-4"><AudioWaveform size={16} className="text-[#1ed760]"/><h2 className="text-sm font-bold">Now playing</h2></div><div className="p-5"><div className="relative mb-5 grid aspect-square place-items-center overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_30%,rgba(30,215,96,.3),transparent_55%),linear-gradient(145deg,#1b3020,#101712)]"><div className="absolute inset-5 rounded-full border border-white/10"/><div className="absolute inset-10 rounded-full border border-white/10"/><div className="grid h-16 w-16 place-items-center rounded-full bg-[#1ed760] text-[#061108]"><AudioWaveform size={29}/></div></div><p className="text-center text-sm font-bold">No audio loaded</p><p className="mt-1 text-center text-xs text-[#7f8a82]">Choose a song to start analyzing</p><div className="mt-5 flex items-center justify-center gap-5"><button disabled className="text-[#718076]" aria-label="Restart"><SkipBack size={19}/></button><button disabled className="grid h-12 w-12 place-items-center rounded-full bg-[#1ed760] text-[#071109] opacity-40" aria-label="Play"><Play size={21} fill="currentColor"/></button><button disabled className="text-[#718076]" aria-label="Pause"><Pause size={19}/></button></div><div className="mt-5 h-1 overflow-hidden rounded-full bg-white/10"><div className="h-full w-0 rounded-full bg-[#1ed760]"/></div><div className="mt-2 flex justify-between text-[10px] text-[#77847a]"><span>0:00</span><span>0:00</span></div><div className="mt-5 grid grid-cols-2 gap-2"><div className="rounded-xl bg-white/[.035] p-3"><p className="label">Key</p><p className="mt-1 text-lg font-bold">—</p></div><div className="rounded-xl bg-white/[.035] p-3"><p className="label">Tempo</p><p className="mt-1 text-lg font-bold">— <span className="text-xs font-medium text-[#78847b]">BPM</span></p></div></div><div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#78847b]"><Volume2 size={14}/> Audio player idle</div></div></Card>}

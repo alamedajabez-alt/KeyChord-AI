@@ -1,13 +1,2 @@
 import type { ReactNode } from "react";
-
-export function PageHeader({ title, description, action }: { title: string; description?: string; action?: ReactNode }) {
-  return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h1 className="text-2xl">{title}</h1>
-        {description && <p className="mt-1 text-sm text-slate-400">{description}</p>}
-      </div>
-      {action}
-    </div>
-  );
-}
+export function PageHeader({title,description,action}:{title:string;description?:string;action?:ReactNode}){return <div className="mb-8 flex flex-wrap items-end justify-between gap-5"><div><p className="label mb-3 !text-[#1ed760]">KEYCHORD AI / WORKSPACE</p><h1 className="text-4xl font-bold leading-none md:text-5xl">{title}</h1>{description&&<p className="mt-3 max-w-xl text-sm leading-6 text-[#8e9991] md:text-base">{description}</p>}</div>{action}</div>}

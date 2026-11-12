@@ -1,15 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  html { color-scheme: dark; }
-  body { @apply bg-ink-950 text-slate-200 font-sans antialiased; }
-  h1, h2, h3 { @apply text-slate-50 font-semibold tracking-tight; }
-  :focus-visible { @apply outline-none ring-2 ring-accent-soft ring-offset-2 ring-offset-ink-950; }
-}
-
-@layer components {
-  .card { @apply rounded-xl border border-ink-700 bg-ink-900; }
-  .label { @apply text-xs font-medium uppercase tracking-wider text-slate-500; }
-}
+:root{font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;color:#f4f4f5;background:#090b0a;font-synthesis:none;text-rendering:optimizeLegibility}
+html{color-scheme:dark;scroll-behavior:smooth}body{@apply bg-bg text-fg antialiased;min-width:320px}h1,h2,h3{font-family:'Space Grotesk','DM Sans',sans-serif;letter-spacing:-.045em}button,a,input{ -webkit-tap-highlight-color:transparent}::selection{background:#1ed760;color:#061108}:focus-visible{outline:2px solid #1ed760;outline-offset:3px}
+@layer components{.card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.075);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.16)}.label{@apply text-[11px] font-bold uppercase tracking-[.16em] text-mutedfg}.surface{background:#121613;border:1px solid rgba(255,255,255,.07);border-radius:14px}.green-button{background:#1ed760;color:#071109;border-radius:999px;font-weight:800;transition:transform .18s,background .18s}.green-button:hover{background:#43e477;transform:scale(1.025)}}
+.marquee-track{display:flex;width:max-content;animation:marquee var(--mq-speed,30s) linear infinite}@keyframes marquee{to{transform:translateX(-50%)}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}.rise{animation:rise .7s ease both}
+::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:#090b0a}::-webkit-scrollbar-thumb{background:#303a32;border-radius:20px}::-webkit-scrollbar-thumb:hover{background:#465548}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

@@ -4,20 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: { 950: "#0a0b10", 900: "#10121a", 800: "#171a25", 700: "#212535", 600: "#2e3347" },
-        accent: { DEFAULT: "#7c6cff", soft: "#a79bff", dim: "#4c3fd1" },
-        ok: "#34d399",
-        warn: "#fbbf24",
-        bad: "#f87171",
+        bg: "#090B0A", fg: "#F4F4F5", muted: "#121613", mutedfg: "#8E9991", line: "#28312A",
+        accent: { DEFAULT: "#1ED760", soft: "#1ED760", dim: "#1ED760" },
+        // legacy aliases for untouched files (src/src/*)
+        ink: { 950: "#0E0F11", 900: "#0E0F11", 800: "#17191C", 700: "#2A2D31", 600: "#2A2D31" },
+        ok: "#B89B6A", warn: "#EFE8DC", bad: "#EFE8DC",
       },
-      fontFamily: {
-        sans: ['"Inter"', "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
-        mono: ['"JetBrains Mono"', "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
-      },
-      fontSize: {
-        display: ["clamp(2.25rem, 5vw, 3.75rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
-      },
-      boxShadow: { glow: "0 0 0 1px rgba(124,108,255,.35), 0 8px 30px -8px rgba(124,108,255,.35)" },
+      fontFamily: { sans: ['"DM Sans"', "ui-sans-serif", "system-ui", "sans-serif"], mono: ['"DM Sans"', "ui-monospace", "monospace"] },
+      borderRadius: { none: "0", sm: "2px", DEFAULT: "2px", md: "2px", lg: "2px", xl: "2px", full: "9999px" },
     },
   },
   plugins: [],

@@ -1,29 +1,10 @@
-import { Music, Upload } from "lucide-react";
-import { ButtonLink } from "../components/ui/Button";
+import { ArrowUpRight, AudioWaveform, Music2, Sparkles, Upload, WandSparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card } from "../components/ui/Card";
-import { EmptyState } from "../components/ui/EmptyState";
-import { PageHeader } from "../components/ui/PageHeader";
 
-// Counts are only shown once the API provides them (Phase 3). No placeholder numbers.
-export default function Dashboard() {
-  return (
-    <>
-      <PageHeader
-        title="Dashboard"
-        description="Your recent songs and analyses."
-        action={<ButtonLink to="/upload"><Upload className="h-4 w-4" aria-hidden /> Upload song</ButtonLink>}
-      />
-      <Card>
-        <div className="border-b border-ink-700 px-5 py-3">
-          <h2 className="text-sm">Recent songs</h2>
-        </div>
-        <EmptyState
-          icon={Music}
-          title="No songs yet"
-          description="Upload an MP3, WAV, M4A or FLAC file and its chords will show up here."
-          action={<ButtonLink to="/upload" variant="secondary">Upload your first song</ButtonLink>}
-        />
-      </Card>
-    </>
-  );
-}
+const steps=[{n:"01",title:"Add your audio",body:"Drop in an MP3, WAV, M4A or FLAC file."},{n:"02",title:"Let AI listen",body:"KeyChord detects the musical key and chord changes."},{n:"03",title:"Learn and play",body:"Follow the timeline and explore piano voicings."}];
+export default function Dashboard(){return <div className="space-y-8 rise">
+  <section className="relative overflow-hidden rounded-[26px] border border-[#1ed760]/15 bg-[radial-gradient(ellipse_at_85%_20%,rgba(30,215,96,.2),transparent_40%),linear-gradient(120deg,#17251a,#101713_58%,#0d110e)] p-7 md:p-11"><div className="relative z-10 max-w-2xl"><div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#1ed760]/25 bg-[#1ed760]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.18em] text-[#55e889]"><Sparkles size={13}/> Your music companion</div><h1 className="max-w-xl text-4xl font-bold leading-[1.05] md:text-6xl">Turn any song into <span className="text-[#1ed760]">chords.</span></h1><p className="mt-5 max-w-lg text-sm leading-7 text-[#a5b1a8] md:text-base">Upload a track, discover its chord progression, and follow along with a visual piano workspace.</p><Link to="/upload" className="green-button mt-8 inline-flex h-12 items-center gap-2 px-6 text-sm"><Upload size={17}/> Analyze a song <ArrowUpRight size={16}/></Link></div><div className="pointer-events-none absolute -bottom-14 right-0 hidden rotate-[-9deg] opacity-30 md:block"><AudioWaveform size={290} strokeWidth={.65} color="#1ed760"/></div></section>
+  <div className="grid gap-4 md:grid-cols-3">{[{icon:Music2,label:"Song library",value:"Your analyses",detail:"Keep your music organized"},{icon:AudioWaveform,label:"Chord timeline",value:"Every change",detail:"See chords with timestamps"},{icon:WandSparkles,label:"Piano voicings",value:"Play with confidence",detail:"Explore suggested notes"}].map(({icon:Icon,label,value,detail})=><Card key={label} className="p-5"><div className="mb-6 grid h-10 w-10 place-items-center rounded-xl bg-[#1ed760]/10 text-[#1ed760]"><Icon size={20}/></div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#77847a]">{label}</p><p className="mt-2 text-lg font-bold">{value}</p><p className="mt-1 text-xs text-[#89948c]">{detail}</p></Card>)}</div>
+  <section><div className="mb-4 flex items-end justify-between"><div><p className="label !text-[#1ed760]">Get started</p><h2 className="mt-2 text-2xl font-bold md:text-3xl">Your first track is one upload away</h2></div><span className="hidden text-xs text-[#7c887f] sm:block">Three simple steps</span></div><div className="grid gap-3 md:grid-cols-3">{steps.map(s=><Card key={s.n} className="p-5"><span className="font-['Space_Grotesk'] text-3xl font-bold text-[#1ed760]/70">{s.n}</span><h3 className="mt-5 text-lg font-bold">{s.title}</h3><p className="mt-2 text-sm leading-6 text-[#8e9991]">{s.body}</p></Card>)}</div></section>
+ </div>}
